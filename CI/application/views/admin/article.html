@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="<?php echo base_url().'resources/admin/'?>css/public.css" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+<form action="<?php echo site_url('admin/article/send')?>" method="post" enctype="multipart/form-data">
+<table class="table">
+    <tr >
+      <td class="th"colspan="10">发表文章</td>
+    </tr>
+    <tr>
+        <td>标题</td>
+        <td><input type="text" name="title" value="<?php echo set_value('title')?>"/>
+            <?php echo form_error('title')?>
+        </td>
+    </tr>
+    <tr>
+        <td>类型</td>
+        <td>
+            <input type="radio" name="type" value="0"<?php echo set_radio('type',0,TRUE)?>/>普通
+            <input type="radio" name="type" value="1"<?php echo set_radio('type',1,TRUE)?>/>热门
+        </td>
+    </tr>
+    <tr>
+        <td>栏目</td>
+        <td>
+            <select id="" name="cid">
+                <?php foreach($category as $v):?>
+                <option value="<?php echo $v['cid']?>"<?php echo set_select('cid','1')?>><?php echo $v['cname']?></option>
+                <?php endforeach?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>缩略图</td>
+        <td>
+            <input type="file" name="thumb">
+        </td>
+    </tr>
+    <tr>
+        <td>摘要</td>
+        <td>
+            <textarea name="info" id="" style="width: 550px;height: 160px"<?php echo set_value('info')?>></textarea>
+            <?php echo form_error('info')?>
+        </td>
+    </tr>
+    <tr>
+        <td>内容</td>
+        <td>
+            <textarea name="content" id="" style="height: 160px;width: 550px;"<?php echo set_value('content')?>></textarea>
+            <?php echo form_error('content')?>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="10"><input type="submit" class="input_button" value="发布"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
